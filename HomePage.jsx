@@ -12,8 +12,7 @@ export default function HomePage() {
       <Text>Workout 2{'\n'}</Text>
       <Text>Workout 3{'\n'}</Text>
       <Text>Workout 4{'\n'}</Text>
-        </View>
-
+      </View>
     </View>
     
   );
