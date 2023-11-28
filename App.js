@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import HomePage from './HomePage'; 
 import WorkoutPage from './workoutPage';
+import PostWorkout from './postWorkout';
 
 const Stack = createStackNavigator();
 
@@ -14,10 +15,20 @@ export default function App() {
         <Stack.Screen
           name="Home"
           component={HomeScreen}
-          options={{ title: 'GitFit' }}
+          options={{ title: 'Welcome' }}
         />
-        <Stack.Screen name="HomePage" component={HomePage} />
-        <Stack.Screen name="WorkoutPage" component={WorkoutPage} />
+        <Stack.Screen name="HomePage" 
+        component={HomePage}
+        options={{ title: 'Home' }} 
+        />
+        <Stack.Screen name="WorkoutPage" 
+        component={WorkoutPage}
+        options={{ title: 'Workout' }} 
+        />
+        <Stack.Screen name="PostWorkout"
+        component={PostWorkout}
+        options={{title: 'Congrats'}} 
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
