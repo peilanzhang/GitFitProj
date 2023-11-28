@@ -35,20 +35,19 @@ export default function App() {
 }
 
 function HomeScreen({ navigation }) {
-  const handleButtonPress = () => {
+  const handleClicktoStart = () => {
     navigation.navigate('HomePage');
   };
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>GitFit</Text>
-      <TouchableOpacity onPress={handleButtonPress} style={styles.button}>
+      <TouchableOpacity onPress={handleClicktoStart} style={styles.button}>
         <Text style={styles.buttonText}>Click to get started!</Text>
       </TouchableOpacity>
     </View>
   );
 }
-
 
 const styles = StyleSheet.create({
   container: {

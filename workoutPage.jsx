@@ -2,6 +2,8 @@ import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import UpperToolBar from './upperToolbar';
+
 
 export default function WorkoutPage({ navigation}) {
   const handlePostWorkout = () => {
@@ -10,6 +12,8 @@ export default function WorkoutPage({ navigation}) {
 
   return (
     <View style={styles.container}>
+      <UpperToolBar navigation={navigation}/>
+
       <Text>THIS IS THE WORKOUT PAGE WOOOO</Text>
 
       <TouchableOpacity onPress={handlePostWorkout} style={styles.button}>

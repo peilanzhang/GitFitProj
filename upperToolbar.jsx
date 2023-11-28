@@ -1,34 +1,49 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, Image } from 'react-native'; // or 'react' for web apps
+import { StyleSheet, View, Text, TouchableOpacity, Image } from 'react-native'; // or 'react' for web apps
+import HomePage from './HomePage'; 
 
-const Toolbar = () => {
+const UpperToolbar = ({navigation}) => {
+  const handleNavigateHome = () => {
+    navigation.navigate('HomePage');
+  };
+
+  const handleSettings = () => {
+    navigation.navigate('Settings')
+  }
+
   return (
     <View style={styles.toolbar}>
-      <TouchableOpacity onPress={() => { /* handle navigation */ }}>
-        <Image source={require('./path-to-home-icon.png')} style={styles.icon} />
+      <TouchableOpacity onPress={handleNavigateHome}>
+        <Image source={require('./home-icon.png')} style={styles.icon} />
       </TouchableOpacity>
-      <Text style={styles.title}>Exercises</Text>
-      <TouchableOpacity onPress={() => { /* handle settings */ }}>
-        <Image source={require('./path-to-settings-icon.png')} style={styles.icon} />
-      </TouchableOpacity>
+
+      <View style={styles.spacer}/>
+
+      <TouchableOpacity onPress={handleSettings}>
+        <Image source={require('./settings-icon.jpeg')} style={styles.icon} />
+        </TouchableOpacity>
     </View>
   );
 };
 
-const styles = {
+const styles = StyleSheet.create({
   toolbar: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'space-between', // Align icons to start and end of the container
     alignItems: 'center',
     padding: 10,
-    // Add other styles to match your design
+    zIndex: 1,
   },
   title: {
     // Add styles for the title text
   },
   icon: {
-    // Add styles for the icons
+    width: 30,
+    height: 30, 
+  },
+  spacer: {
+    flex: 1,
   }
-};
+});
 
-export default Toolbar;
+export default UpperToolbar;
