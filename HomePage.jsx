@@ -1,12 +1,16 @@
 import React from 'react';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import workoutPage from './workoutPage'; 
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import WorkoutPage from './workoutPage';
 
-const Stack = createStackNavigator();
+const Stack = createStackNavigator()
 
-export default function HomePage() {
+export default function HomePage({ navigation }) {
+  const handleStartWorkout = () => {
+    navigation.navigate('WorkoutPage');
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Today's Workout: {'\n'}</Text>
@@ -18,9 +22,10 @@ export default function HomePage() {
         <Text>Workout 4{'\n'}</Text>
       </View>
 
-      {/* <TouchableOpacity onPress={handleButtonPress} style={styles.button}>
+      <TouchableOpacity onPress={handleStartWorkout} style={styles.button}>
         <Text style={styles.buttonText}>Start Workout!</Text>
-      </TouchableOpacity> */}
+      </TouchableOpacity>
+
     </View>
   );
 }

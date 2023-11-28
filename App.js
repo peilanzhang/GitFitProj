@@ -1,8 +1,9 @@
 import React from 'react';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import HomePage from './HomePage'; 
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import WorkoutPage from './workoutPage';
 
 const Stack = createStackNavigator();
 
@@ -16,6 +17,7 @@ export default function App() {
           options={{ title: 'GitFit' }}
         />
         <Stack.Screen name="HomePage" component={HomePage} />
+        <Stack.Screen name="WorkoutPage" component={WorkoutPage} />
       </Stack.Navigator>
     </NavigationContainer>
   );
