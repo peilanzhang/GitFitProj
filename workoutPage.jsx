@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
-export default function workoutPage({ navigation}) {
+export default function WorkoutPage({ navigation}) {
   const handlePostWorkout = () => {
     navigation.navigate('PostWorkout');
   };
@@ -13,7 +13,7 @@ export default function workoutPage({ navigation}) {
       <Text>THIS IS THE WORKOUT PAGE WOOOO</Text>
 
       <TouchableOpacity onPress={handlePostWorkout} style={styles.button}>
-        <Text style={styles.buttonText}>Finish Workout!</Text>
+        <Text style={styles.buttonText}>Finish Workout</Text>
       </TouchableOpacity>
     </View>
     

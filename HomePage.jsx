@@ -22,7 +22,7 @@ export default function HomePage({ navigation }) {
       </View>
 
       <TouchableOpacity onPress={handleStartWorkout} style={styles.button}>
-        <Text style={styles.buttonText}>Start Workout!</Text>
+        <Text style={styles.buttonText}>Start Workout</Text>
       </TouchableOpacity>
 
     </View>
