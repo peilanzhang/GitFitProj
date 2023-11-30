@@ -1,6 +1,10 @@
 import React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, Image } from 'react-native'; // or 'react' for web apps
+import { createStackNavigator } from '@react-navigation/stack';
 import HomePage from './HomePage'; 
+import AppSettings from './AppSettings';
+
+const Stack = createStackNavigator()
 
 const UpperToolbar = ({navigation}) => {
   const handleNavigateHome = () => {
@@ -8,9 +12,9 @@ const UpperToolbar = ({navigation}) => {
   };
 
   const handleSettings = () => {
-    navigation.navigate('Settings')
-  }
-
+    navigation.navigate('AppSettings')
+  };
+  
   return (
     <View style={styles.toolbar}>
       <TouchableOpacity onPress={handleNavigateHome}>

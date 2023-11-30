@@ -1,9 +1,10 @@
 import React from 'react';
+import { createStackNavigator } from '@react-navigation/stack';
 import { View, Text, Switch, TouchableOpacity, Button } from 'react-native'; // or your UI library
 
-const SettingsScreen = () => {
-  // State variables and functions to handle toggle switches and other interactive elements would go here
+const Stack = createStackNavigator()
 
+export default function AppSettings(){
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Settings</Text>
@@ -40,25 +41,37 @@ const SettingsScreen = () => {
       </View>
     </View>
   );
-};
+}
+
+
 
 // You would define your styles here to match the design in the image
-const styles = {
+const styles = StyleSheet.create({
   container: {
-    // styles for container
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    paddingTop: 20,
+    paddingHorizontal: 16,
   },
-  header: {
-    // styles for header text
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
   },
-  settingItem: {
-    // styles for each setting item
+  target: {
+    fontSize: 16,
   },
-  settingLabel: {
-    // styles for setting labels
+  button: {
+    marginTop: 20,
+    padding: 10,
+    backgroundColor: '#566263',
+    borderRadius: 20,
   },
-  linkText: {
-    // styles for link-like texts
+  buttonText: {
+    color: '#fff',
+    fontSize: 16,
   },
-};
-
-export default SettingsScreen;
+  workoutContent: {
+    marginTop: 20,
+  },
+});
