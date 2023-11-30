@@ -12,7 +12,6 @@ export default function WorkoutPage({ navigation}) {
 
   return (
     <View style={styles.container}>
-      <UpperToolBar navigation={navigation}/>
 
       <Text>THIS IS THE WORKOUT PAGE WOOOO</Text>
 

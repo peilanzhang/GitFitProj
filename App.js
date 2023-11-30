@@ -5,18 +5,32 @@ import { createStackNavigator } from '@react-navigation/stack';
 import HomePage from './HomePage'; 
 import WorkoutPage from './workoutPage';
 import PostWorkout from './postWorkout';
+import LowerToolbar from './lowerToolbar';
+import InputPage from './inputExcersise';
+import GeneratorPage from './workoutGenerator';
+import ExerciseList from './excersiseList';
+import UpperToolbar from './upperToolbar';
+import Settings from './AppSettings'
+
 
 const Stack = createStackNavigator();
 
-export default function App() {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator>
+  export default function App() {
+    return (
+      <NavigationContainer>
+        <UpperToolbar/>
+        <Stack.Navigator>
         <Stack.Screen
           name="Home"
           component={HomeScreen}
           options={{ title: 'Welcome' }}
-        />
+        />  
+        <Stack.Screen
+        name="Settings"
+        component={Settings}
+        options={{ title: 'Settings' }}
+      />
+
         <Stack.Screen name="HomePage" 
         component={HomePage}
         options={{ title: 'Home' }} 
@@ -29,7 +43,20 @@ export default function App() {
         component={PostWorkout}
         options={{title: 'Congrats'}} 
         />
+        <Stack.Screen name="InputPage"
+        component={InputPage}
+        options={{title: 'Input'}}
+        />
+        <Stack.Screen name="GeneratorPage"
+        component={GeneratorPage}
+        options={{title: 'Generator'}}
+        />
+          <Stack.Screen name="ExerciseList"
+        component={ExerciseList}
+        options={{title: 'Exercise List'}}
+        />
       </Stack.Navigator>
+      <LowerToolbar />
     </NavigationContainer>
   );
 }
@@ -47,7 +74,7 @@ function HomeScreen({ navigation }) {
       </TouchableOpacity>
     </View>
   );
-}
+  }
 
 const styles = StyleSheet.create({
   container: {

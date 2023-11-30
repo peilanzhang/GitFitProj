@@ -13,7 +13,6 @@ export default function HomePage({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <UpperToolBar navigation={navigation}/>
       <Text style={styles.title}>Today's Workout: {'\n'}</Text>
       <Text style={styles.target}>Push{'\n'}</Text>
       <View style={styles.workoutContent}>
