@@ -1,9 +1,8 @@
 import React from 'react';
-import { View, Text, Switch, TouchableOpacity, Button, StyleSheet , TextInput} from 'react-native'; // or your UI library
+import { View, Text, Switch, TouchableOpacity, Button,StyleSheet,TextInput } from 'react-native'; // or your UI library
 
-const SettingsScreen = () => {
-  // State variables and functions to handle toggle switches and other interactive elements would go here
 
+ function AppSettings(){
   return (
     <View style={styles.container}>
 
@@ -41,33 +40,35 @@ const SettingsScreen = () => {
       </View>
     </View>
   );
-};
+}
+
+
 
 // You would define your styles here to match the design in the image
 const styles = StyleSheet.create({
   container: {
-    // styles for your container
+    // styles for container
+  },
+  header: {
+    // styles for header text
+  },
+  settingItem: {
+    // styles for each setting item
+  },
+  settingLabel: {
+    // styles for setting labels
   },
   linkText: {
-    color: 'blue',
-    textDecorationLine: 'underline',
+color: 'blue',
+textDecorationLine: 'underline',
+
   },
   buttonText: {
-    marginTop: 20,
-    color: 'red',
-    fontSize: 25,
-    
-  },  
-  input: {
-    height: 30,
-    width: '40%',
-    borderColor: 'gray',
-    borderWidth: 1,
-    borderRadius: 4,
-    marginBottom: 10,
-    padding: 8,
+color: 'red',
+fontSize: 20,
   },
-  // ... other styles
-});
+  input: {
 
-export default SettingsScreen;
+},
+});
+export default AppSettings;

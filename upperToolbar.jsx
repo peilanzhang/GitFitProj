@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, Image } from 'react-native'; // or 'react' for web apps
 import { useNavigation } from '@react-navigation/native';
 
+
 const UpperToolbar = () => {
   const navigation = useNavigation();
 
@@ -11,8 +12,8 @@ const UpperToolbar = () => {
 
   const handleSettings = () => {
     navigation.navigate('Settings')
-  }
-
+  };
+  
   return (
     <View style={styles.toolbar}>
       <TouchableOpacity onPress={handleNavigateHome}>
