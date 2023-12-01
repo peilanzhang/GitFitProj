@@ -11,6 +11,7 @@ import GeneratorPage from './workoutGenerator';
 import ExerciseList from './excersiseList';
 import UpperToolbar from './upperToolbar';
 import Settings from './AppSettings'
+import WorkoutHistory from './workoutHistory';
 
 
 const Stack = createStackNavigator();
@@ -51,10 +52,15 @@ const Stack = createStackNavigator();
         component={GeneratorPage}
         options={{title: 'Generator'}}
         />
-          <Stack.Screen name="ExerciseList"
+        <Stack.Screen name="ExerciseList"
         component={ExerciseList}
         options={{title: 'Exercise List'}}
         />
+        <Stack.Screen name="WorkoutHistory"
+        component={WorkoutHistory}
+        options={{title: 'Workout History'}}
+        />
+
       </Stack.Navigator>
       <LowerToolbar />
     </NavigationContainer>

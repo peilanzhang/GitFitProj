@@ -1,8 +1,14 @@
 import React from 'react';
 import { View, Text, Switch, TouchableOpacity, Button,StyleSheet,TextInput } from 'react-native'; // or your UI library
+import { useNavigation } from '@react-navigation/native';
 
+ function AppSettings() {
+  const navigation = useNavigation();
 
- function AppSettings(){
+  const goToWorkoutHistory = () => {
+    navigation.navigate('WorkoutHistory')
+  };
+
   return (
     <View style={styles.container}>
 
@@ -26,7 +32,7 @@ import { View, Text, Switch, TouchableOpacity, Button,StyleSheet,TextInput } fro
 
       <View style={styles.settingItem}>
         <TouchableOpacity
-          // onPress={goToWorkoutHistory}
+          onPress={goToWorkoutHistory}
         >
           <Text style={styles.linkText}>Workout history</Text>
         </TouchableOpacity>
@@ -35,8 +41,7 @@ import { View, Text, Switch, TouchableOpacity, Button,StyleSheet,TextInput } fro
       <View style={styles.settingItem}>
         <TouchableOpacity>
           <Text style={styles.buttonText}>Reset Data</Text>
-          
-                   </TouchableOpacity>
+      </TouchableOpacity>
       </View>
     </View>
   );
@@ -51,7 +56,7 @@ const styles = StyleSheet.create({
     alignItems: 'center', 
     justifyContent: 'center'
   },
-  
+
   settingItem: {
     // styles for each setting item
   },
