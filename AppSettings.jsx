@@ -48,27 +48,30 @@ import { View, Text, Switch, TouchableOpacity, Button,StyleSheet,TextInput } fro
 const styles = StyleSheet.create({
   container: {
     // styles for container
+    alignItems: 'center', 
+    justifyContent: 'center'
   },
-  header: {
-    // styles for header text
-  },
+  
   settingItem: {
     // styles for each setting item
   },
   settingLabel: {
     // styles for setting labels
+    fontSize: 24,
+    padding: 10,
   },
   linkText: {
-color: 'blue',
-textDecorationLine: 'underline',
-
+  color: 'blue',
+  textDecorationLine: 'underline',
+  fontSize: 20,
+  padding: 10.
   },
+
   buttonText: {
-color: 'red',
-fontSize: 20,
+  color: 'red',
+  fontSize: 20,
+  padding: 10,
   },
-  input: {
 
-},
 });
 export default AppSettings;
