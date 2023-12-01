@@ -47,8 +47,8 @@ const toolbarStyle = StyleSheet.create({
     },
    
     icon: {
-      width: 60,
-      height: 60, 
+      width: 50,
+      height: 50, 
     },
   
   });
