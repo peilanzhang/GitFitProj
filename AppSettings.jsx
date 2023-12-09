@@ -9,34 +9,45 @@ import { useNavigation } from '@react-navigation/native';
     navigation.navigate('WorkoutHistory')
   };
 
+  const [selectedUnit, setSelectedUnit] = React.useState('Metric');
+
+  const handleUnitsChange = (unit) => {
+    setSelectedUnit(unit);
+  };
+
   return (
     <View style={styles.container}>
-
       <View style={styles.settingItem}>
         <Text style={styles.settingLabel}>Unit of measurement</Text>
-        <TextInput
-        style={styles.input}
-        placeholder="Metric or Imperial"
-      />     
-       </View>
+        <View style={styles.unitButton}>
 
-      <View style={styles.settingItem}>
-        <Text style={styles.settingLabel}>Dark or Light mode</Text>
+          {/* Metric and Imperial Buttons  */}
+          <TouchableOpacity
+              style={[styles.unitButton, selectedUnit === 'Metric' && styles.selectedUnit]}
+              onPress={() => handleUnitChange('Metric')}>
+            <Text style={[styles.unitButton, selectedUnit === 'Metric' && styles.selectedUnit]}>Metric</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+              style={[styles.unitButton, selectedUnit === 'Imperial' && styles.selectedUnit]}
+              onPress={() => handleUnitChange('Imperial')}>
+            <Text style={[styles.unitButton, selectedUnit === 'Imperial' && styles.selectedUnit]}>Imperial</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+
+      {/* Dark Mode Switch  */}
+      <View style={styles.switchContainer}>
+        <Text style={styles.settingLabel}>Dark Mode</Text>
         <Switch
           // onValueChange={handleThemeChange}
           // value={isDarkMode}
         />
       </View>
 
-   
-
-      <View style={styles.settingItem}>
-        <TouchableOpacity
-          onPress={goToWorkoutHistory}
-        >
-          <Text style={styles.linkText}>Workout history</Text>
-        </TouchableOpacity>
-      </View>
+      {/* View Workout History Button */}
+      <TouchableOpacity style={styles.linkButton} onPress={goToWorkoutHistory}>
+        <Text style={styles.linkText}>View Workout History</Text>
+      </TouchableOpacity>
 
       <View style={styles.settingItem}>
         <TouchableOpacity>
@@ -65,17 +76,34 @@ const styles = StyleSheet.create({
     fontSize: 24,
     padding: 10,
   },
+  input: {
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 5,
+    paddingHorizontal: 10,
+    height: 40,
+  },
   linkText: {
   color: 'blue',
   textDecorationLine: 'underline',
   fontSize: 20,
   padding: 10.
   },
-
+  switchContainer: {
+  flexDirection: 'row',
+  alignItems: 'center',
+  marginBottom: 20,
+  },
   buttonText: {
   color: 'red',
   fontSize: 20,
   padding: 10,
+  borderRadius: 5,
+  },
+  unitButton: {
+    fontSize: 18,
+    color: 'black',
+    textAlign: 'center',
   },
 
 });
