@@ -2,16 +2,16 @@ import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import HomePage from './HomePage'; 
-import WorkoutPage from './workoutPage';
-import PostWorkout from './postWorkout';
-import LowerToolbar from './lowerToolbar';
-import InputPage from './inputExcersise';
-import GeneratorPage from './workoutGenerator';
-import ExerciseList from './excersiseList';
-import UpperToolbar from './upperToolbar';
-import Settings from './AppSettings'
-import WorkoutHistory from './workoutHistory';
+import HomePage from './screens/HomePage'; 
+import WorkoutPage from './screens/workoutPage';
+import PostWorkout from './screens/postWorkout';
+import LowerToolbar from './toolbars/lowerToolbar';
+import InputPage from './screens/inputExcersise';
+import GeneratorPage from './screens/workoutGenerator';
+import ExerciseList from './screens/excersiseList';
+import UpperToolbar from './toolbars/upperToolbar';
+import Settings from './screens/AppSettings'
+import WorkoutHistory from './screens/workoutHistory';
 
 
 const Stack = createStackNavigator();

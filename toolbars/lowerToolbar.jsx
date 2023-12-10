@@ -3,7 +3,7 @@ import React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, Image } from 'react-native'; // or 'react' for web apps
 import { useNavigation } from '@react-navigation/native';
 import {Picker} from '@react-native-picker/picker'
-import InputPage from './inputExcersise';
+import InputPage from '../screens/inputExcersise';
 
 
 function LowerToolbar() {

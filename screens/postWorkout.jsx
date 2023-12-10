@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import UpperToolBar from './upperToolbar';
+import UpperToolBar from '../toolbars/upperToolbar';
 
 
 export default function PostWorkout(navigation) {
