@@ -11,7 +11,7 @@ export default function WorkoutPage({ navigation }) {
   const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: isDarkMode ? '#121212' : '#f0f0f0',
+      backgroundColor: isDarkMode ? '#343541' : '#f7f7f7',
       alignItems: 'center',
       justifyContent: 'center',
       padding: 20,
