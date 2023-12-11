@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Text, TextInput, TouchableOpacity } from 'react-native';
+import { useTheme } from '../Theme/themeContext';
 
 function ExerciseForm() {
   const [exerciseName, setExerciseName] = useState('');
@@ -10,6 +11,39 @@ function ExerciseForm() {
     // Process the data here or pass it to a parent component
     console.log(exerciseName, muscleWorked, tutorialLink);
   };
+
+  const {isDarkMode} = useTheme();
+
+  const styles = StyleSheet.create({
+    container: {
+      backgroundColor: isDarkMode ? '#343541' : '#fff',
+      flex: 1,
+      padding: 20,
+      justifyContent: 'center',
+    },
+    label: {
+      color: isDarkMode ? '#fff' : '#000',
+      fontSize: 30,
+    },
+    input: {
+      color: isDarkMode ? '#fff' : '#000',
+      height: 40,
+      borderColor: 'gray',
+      borderWidth: 1,
+      padding: 10,
+      marginBottom: 20,
+    },
+    button: {
+      color: isDarkMode ? '#fff' : '#000',
+      backgroundColor: 'purple',
+      padding: 10,
+      borderRadius: 5,
+      alignItems: 'center',
+    },
+    buttonText: {
+      color: 'white',
+    }
+  });
 
   return (
     <View style={styles.container}>

@@ -1,9 +1,31 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import UpperToolBar from '../toolbars/upperToolbar';
+import { useTheme } from '../Theme/themeContext';
 
 
 export default function PostWorkout(navigation) {
+  const {isDarkMode} = useTheme();
+
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: isDarkMode ? '#343541' : '#fff',
+      alignItems: 'center',
+      paddingTop: 20,
+      paddingHorizontal: 16,
+    }, title: {
+      color: isDarkMode ? '#fff' : '#000',
+      fontSize: 24,
+      fontWeight: 'bold',
+    },
+    message: {
+      color: isDarkMode ? '#fff' : '#000',
+      fontSize: 18,
+      textAlign: 'center'
+    }
+  });
+
   return (
     <View style={styles.container}>
         <Text style={styles.title}>Nice Work! {'\n'}</Text>
@@ -12,6 +34,8 @@ export default function PostWorkout(navigation) {
     
   );
 }
+
+
 
 const styles = StyleSheet.create({
   container: {

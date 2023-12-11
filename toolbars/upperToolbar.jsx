@@ -7,7 +7,7 @@ const UpperToolbar = () => {
   const navigation = useNavigation();
 
   const handleNavigateHome = () => {
-    navigation.navigate('Home');
+    navigation.navigate('HomePage');
   };
 
   const handleSettings = () => {

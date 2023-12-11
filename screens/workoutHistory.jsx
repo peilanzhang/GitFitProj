@@ -1,13 +1,21 @@
 // In WorkoutHistory.jsx
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { useTheme } from '../Theme/themeContext';
 
 const WorkoutHistory = () => {
-  // Your component logic here
+  const {isDarkMode} = useTheme();
+
+  const styles  = StyleSheet.create({
+    Text:{
+      color: isDarkMode ? '#fff' : '#000',
+    },
+    }
+  );
 
   return (
     <View>
-      <Text>Workout History Screen</Text>
+      <Text style={styles.Text}>Workout History Screen</Text>
       {/* Your content here */}
     </View>
   );

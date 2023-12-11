@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Text, TextInput, TouchableOpacity} from 'react-native';
 import {Picker} from '@react-native-picker/picker'
+import { useTheme } from '../Theme/themeContext';
 
 function WorkoutForm() {
   const [selectedWorkoutType, setSelectedWorkoutType] = useState("push");
@@ -10,6 +11,58 @@ function WorkoutForm() {
     // Logic to generate workout
     console.log(selectedWorkoutType, customExercise);
   };
+  
+  const {isDarkMode} = useTheme();
+
+  const styles = StyleSheet.create({
+    container: {
+      backgroundColor: isDarkMode ? '#343541' : '#fff',
+      flex: 1,
+      padding: 20,
+      justifyContent: 'center',
+      alignItems: 'stretch',
+    },
+    label: {
+      color: isDarkMode ? '#fff' : '#000',
+      fontSize: 30,
+    },
+    picker: {
+      color: 'white',
+      height: 75,
+      width: '100%',
+      marginBottom: 150,
+    },
+    customizationLabel: {
+      color: isDarkMode ? '#fff' : '#000',
+      fontSize: 16,
+      fontWeight: 'bold',
+      marginBottom: 5,
+    },
+    customizationSubLabel: {
+      color: isDarkMode ? '#fff' : '#000',
+      fontSize: 14,
+      marginBottom: 10,
+    },
+    input: {
+      color: isDarkMode ? '#fff' : '#000',
+      height: 40,
+      borderColor: 'gray',
+      borderWidth: 1,
+      padding: 10,
+      marginBottom: 20,
+    },
+    button: {
+      color: isDarkMode ? '#fff' : '#000',
+      backgroundColor: 'purple',
+      padding: 10,
+      borderRadius: 5,
+      alignItems: 'center',
+    },
+    buttonText: {
+      color: isDarkMode ? '#fff' : '#000',
+      fontSize: 16,
+    }
+  });
 
   return (
     <View style={styles.container}>
@@ -19,7 +72,7 @@ function WorkoutForm() {
         style={styles.picker}
         onValueChange={(itemValue, itemIndex) =>
           setSelectedWorkoutType(itemValue)
-        }>
+          }itemStyle={{ color: isDarkMode ? '#fff' : 'black' }}>
         <Picker.Item label="Push (Shoulders, Chest, Triceps)" value="push" />
         <Picker.Item label="Pull (Back, Biceps)" value="pull" />
         <Picker.Item label="Legs (Quads, Hamstrings, Calves)" value="legs" />
@@ -53,6 +106,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
   },
   picker: {
+    color: 'white',
     height: 75,
     width: '100%',
     marginBottom: 150,
