@@ -1,86 +1,63 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import UpperToolBar from '../toolbars/upperToolbar';
+import { StyleSheet, Text, View, TouchableOpacity, SafeAreaView } from 'react-native';
 import { useTheme } from '../Theme/themeContext';
 
-
-
-export default function WorkoutPage({ navigation}) {
+export default function WorkoutPage({ navigation }) {
   const handlePostWorkout = () => {
     navigation.navigate('PostWorkout');
   };
 
-  const {isDarkMode} = useTheme();
+  const { isDarkMode } = useTheme();
   const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: isDarkMode ? '#343541' : '#fff',
+      backgroundColor: isDarkMode ? '#121212' : '#f0f0f0',
       alignItems: 'center',
-      paddingTop: 20,
-      paddingHorizantal: 16,
+      justifyContent: 'center',
+      padding: 20,
     },
     title: {
-      fontSize: 24,
-      fontWeight: 'bold', 
-      color: isDarkMode ? '#bdbfc6' : 'black',
+      fontSize: 28, 
+      fontWeight: 'bold',
+      color: isDarkMode ? '#fff' : '#000000',
+      marginBottom: 8, 
     },
-    target: {
-      fontSize: 16,
-      color: isDarkMode ? '#bdbfc6' : 'black',
+    text: {
+      fontSize: 20, 
+      color: isDarkMode ? '#fff' : '#000000',
+      textAlign: 'center',
+      paddingHorizontal: 10,
+      marginBottom: 16, 
     },
     button: {
       marginTop: 20,
-      padding: 10,
-      backgroundColor: isDarkMode ? '#566263' : 'blue',
-      borderRadius: 20,
+      paddingVertical: 15,
+      paddingHorizontal: 30,
+      backgroundColor: '#4D9DFF',
+      borderRadius: 25,
+      shadowColor: '#4D9DFF',
+      shadowOffset: { width: 0, height: 4 },
+      shadowOpacity: 0.3,
+      shadowRadius: 5,
     },
     buttonText: {
       color: '#fff',
-      fontSize: 16,
+      fontSize: 18,
+      fontWeight: '500', 
     },
     workoutContent: {
       marginTop: 20,
-      color: isDarkMode ? '#fff' : '#fff',
-    },
-    text:{
       color: isDarkMode ? '#fff' : '#000',
-    }
-    });
+    },
+  });
 
   return (
-    <View style={styles.container}>
-
-      <Text style={styles.text}>THIS IS THE WORKOUT PAGE WOOOO</Text>
-
+    <SafeAreaView style={styles.container}>
+      <Text style={styles.title}>Workout Progress</Text>
+      <Text style={styles.text}>You're doing great! Keep up the momentum and push through!</Text>
       <TouchableOpacity onPress={handlePostWorkout} style={styles.button}>
         <Text style={styles.buttonText}>Finish Workout</Text>
       </TouchableOpacity>
-    </View>
-    
+    </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    paddingTop: 20,
-    paddingHorizontal: 16,
-  },
-  button: {
-    marginTop: 20,
-    padding: 10,
-    backgroundColor: '#566263',
-    borderRadius: 20,
-  },
-  buttonText: {
-    color: '#fff',
-    fontSize: 16,
-  },
-  workoutContent: {
-    marginTop: 20,
-  },
-});
