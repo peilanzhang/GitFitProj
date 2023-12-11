@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, Switch, TouchableOpacity, Button,StyleSheet,TextInput } from 'react-native'; // or your UI library
 import { useNavigation } from '@react-navigation/native';
+import { useTheme } from '../Theme/themeContext';
 
  function AppSettings() {
   const navigation = useNavigation();
@@ -9,11 +10,61 @@ import { useNavigation } from '@react-navigation/native';
     navigation.navigate('WorkoutHistory')
   };
 
+  const { isDarkMode , toggleDarkMode} = useTheme();
   const [selectedUnit, setSelectedUnit] = React.useState('Metric');
 
-  const handleUnitsChange = (unit) => {
+  const handleUnitChange = (unit) => {
     setSelectedUnit(unit);
   };
+
+  // Define styles conditionally based on isDarkMode
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: isDarkMode ? '#343541' : '#fff',
+      alignItems: 'center',
+      paddingTop: 20,
+      paddingHorizantal: 16,
+    },
+    settingItem: {
+      // styles for each setting item
+    },
+    settingLabel: {
+      // styles for setting labels
+      fontSize: 24,
+      padding: 10,
+      color: isDarkMode ? '#bdbfc6' : 'black',
+    },
+    input: {
+      borderWidth: 1,
+      borderColor: '#ccc',
+      borderRadius: 5,
+      paddingHorizontal: 10,
+      height: 40,
+    },
+    linkText: {
+    color: 'blue',
+    textDecorationLine: 'underline',
+    fontSize: 20,
+    padding: 10.
+    },
+    switchContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 20,
+    },
+    buttonText: {
+    color: 'red',
+    fontSize: 20,
+    padding: 10,
+    borderRadius: 5,
+    },
+    unitButton: {
+      fontSize: 18,
+      color: isDarkMode ? '#bdbfc6' : 'black',
+      textAlign: 'center',
+    },
+  });
 
   return (
     <View style={styles.container}>
@@ -39,8 +90,8 @@ import { useNavigation } from '@react-navigation/native';
       <View style={styles.switchContainer}>
         <Text style={styles.settingLabel}>Dark Mode</Text>
         <Switch
-          // onValueChange={handleThemeChange}
-          // value={isDarkMode}
+          value = {isDarkMode}
+          onValueChange={toggleDarkMode}
         />
       </View>
 

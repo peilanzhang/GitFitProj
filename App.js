@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { ThemeProvider } from './Theme/themeContext';
 import HomePage from './screens/HomePage'; 
 import WorkoutPage from './screens/workoutPage';
 import PostWorkout from './screens/postWorkout';
@@ -18,52 +19,54 @@ const Stack = createStackNavigator();
 
   export default function App() {
     return (
-      <NavigationContainer>
-        <UpperToolbar/>
-        <Stack.Navigator>
-        <Stack.Screen
-          name="Home"
-          component={HomeScreen}
-          options={{ title: 'Welcome' }}
-        />  
-        <Stack.Screen
-        name="Settings"
-        component={Settings}
-        options={{ title: 'Settings' }}
-      />
-
-        <Stack.Screen name="HomePage" 
-        component={HomePage}
-        options={{ title: 'Home' }} 
-        />
-        <Stack.Screen name="WorkoutPage" 
-        component={WorkoutPage}
-        options={{ title: 'Workout' }} 
-        />
-        <Stack.Screen name="PostWorkout"
-        component={PostWorkout}
-        options={{title: 'Congrats'}} 
-        />
-        <Stack.Screen name="InputPage"
-        component={InputPage}
-        options={{title: 'Input'}}
-        />
-        <Stack.Screen name="GeneratorPage"
-        component={GeneratorPage}
-        options={{title: 'Generator'}}
-        />
-        <Stack.Screen name="ExerciseList"
-        component={ExerciseList}
-        options={{title: 'Exercise List'}}
-        />
-        <Stack.Screen name="WorkoutHistory"
-        component={WorkoutHistory}
-        options={{title: 'Workout History'}}
+      <ThemeProvider>
+        <NavigationContainer>
+          <UpperToolbar/>
+          <Stack.Navigator>
+          <Stack.Screen
+            name="Home"
+            component={HomeScreen}
+            options={{ title: 'Welcome' }}
+          />  
+          <Stack.Screen
+          name="Settings"
+          component={Settings}
+          options={{ title: 'Settings' }}
         />
 
-      </Stack.Navigator>
-      <LowerToolbar />
-    </NavigationContainer>
+          <Stack.Screen name="HomePage" 
+          component={HomePage}
+          options={{ title: 'Home' }} 
+          />
+          <Stack.Screen name="WorkoutPage" 
+          component={WorkoutPage}
+          options={{ title: 'Workout' }} 
+          />
+          <Stack.Screen name="PostWorkout"
+          component={PostWorkout}
+          options={{title: 'Congrats'}} 
+          />
+          <Stack.Screen name="InputPage"
+          component={InputPage}
+          options={{title: 'Input'}}
+          />
+          <Stack.Screen name="GeneratorPage"
+          component={GeneratorPage}
+          options={{title: 'Generator'}}
+          />
+          <Stack.Screen name="ExerciseList"
+          component={ExerciseList}
+          options={{title: 'Exercise List'}}
+          />
+          <Stack.Screen name="WorkoutHistory"
+          component={WorkoutHistory}
+          options={{title: 'Workout History'}}
+          />
+
+        </Stack.Navigator>
+        <LowerToolbar />
+      </NavigationContainer>
+    </ThemeProvider>
   );
 }
 
