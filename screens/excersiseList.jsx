@@ -15,8 +15,8 @@ const ExerciseList = () => {
     categoryTitle: {
       color: isDarkMode ? '#FFFFFF' : '#000000',
       fontWeight: 'bold',
-      fontSize: 22,
-      marginTop: 30,
+      fontSize: 30,
+      marginTop: 10,
       marginBottom: 15,
     },
     exerciseTouchable: {
@@ -33,8 +33,20 @@ const ExerciseList = () => {
       elevation: 3, // Elevation for Android (shadow)
     },
     exerciseItem: {
-      color: isDarkMode ? '#bdbfc6' : '#333',
+      color: isDarkMode ? '#bdbfc6' : 'blue',
       fontSize: 18,
+      
+    },
+    muscleText: {
+      color: isDarkMode ? '#bdbfc6' : 'black',
+      fontWeight: 'bold',
+      fontSize: 24,
+      fontStyle: 'italic',
+    },
+    nameText: {
+      color: isDarkMode ? '#bdbfc6' : 'blue',
+      fontSize: 18,
+      textDecorationLine: 'underline',
     },
   });
 
@@ -108,14 +120,17 @@ const handlePress = (exercise) => {
 
   return (
     <ScrollView style={styles.container}>
-        <Text style={styles.header}>Exercises</Text>
-        {exercises.map(exercise => (
-            <TouchableOpacity key={exercise.id} onPress={() => handlePress(exercise.link)} style={styles.item}>
-                <Text style={styles.item}>{exercise.name}-{exercise.muscle}</Text>
-            </TouchableOpacity>
-        ))}
+      <Text style={styles.categoryTitle}>Exercises</Text>
+      {exercises.sort((a, b) => a.muscle.localeCompare(b.muscle)).map(exercise => (
+        <TouchableOpacity key={exercise.name} onPress={() => handlePress(exercise.link)} style={styles.exerciseTouchable}>
+<Text style={styles.exerciseItem}>
+  <Text style={styles.muscleText}>{exercise.muscle}</Text> - <Text style={styles.nameText}>{exercise.name}</Text>
+</Text>
+        </TouchableOpacity>
+      ))}
     </ScrollView>
   );
+  
 };
 
 

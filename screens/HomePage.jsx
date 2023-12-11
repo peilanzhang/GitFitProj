@@ -1,11 +1,20 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, ScrollView } from 'react-native';
 import { useTheme } from '../Theme/themeContext';
+import { useData } from '../DataContext'; // Import the useData hook from the DataContext
 
 export default function HomePage({ navigation }) {
+  const { data } = useData(); // Access the data from the context
   const handleStartWorkout = () => {
+    console.log('data from context:', data);
     navigation.navigate('WorkoutPage');
+
   };
+-
+  
+  useEffect(() => {
+console.log(data) 
+ }, []);
 
   const { isDarkMode } = useTheme();
 
@@ -65,12 +74,20 @@ export default function HomePage({ navigation }) {
     <ScrollView style={styles.container}>
       <Text style={styles.title}>Today's Workout:</Text>
       <Text style={styles.target}>Push</Text>
-      <View style={styles.workoutContent}>
-        <Text style={styles.workoutText}>Workout 1</Text>
-        <Text style={styles.workoutText}>Workout 2</Text>
-        <Text style={styles.workoutText}>Workout 3</Text>
-        <Text style={styles.workoutText}>Workout 4</Text>
-      </View>
+      <View style={styles.container}>
+  {data ? (
+    <>
+      <Text style={styles.title}>Exercise Names:</Text>
+      {data.map((exercise, index) => (
+        <Text key={index} style={styles.workoutText}>
+          {exercise.name}
+        </Text>
+      ))}
+    </>
+  ) : (
+    <Text style={styles.message}>Generate a workout</Text>
+  )}
+</View>
 
       <TouchableOpacity onPress={handleStartWorkout} style={styles.button}>
         <Text style={styles.buttonText}>Start Workout</Text>

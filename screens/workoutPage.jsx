@@ -1,8 +1,10 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, SafeAreaView } from 'react-native';
 import { useTheme } from '../Theme/themeContext';
+import { useData } from '../DataContext'; // Import the useData hook from the DataContext
 
 export default function WorkoutPage({ navigation }) {
+  const { data } = useData(); // Access the data from the context
   const handlePostWorkout = () => {
     navigation.navigate('PostWorkout');
   };
@@ -55,6 +57,15 @@ export default function WorkoutPage({ navigation }) {
     <SafeAreaView style={styles.container}>
       <Text style={styles.title}>Workout Progress</Text>
       <Text style={styles.text}>You're doing great! Keep up the momentum and push through!</Text>
+      
+<View style={styles.container}>
+      <Text style={styles.title}>Exercise Names:</Text>
+      {data.map((exercise,index) => (
+        <Text key={index} style={styles.workoutText}>
+          {exercise.name}
+        </Text>
+      ))}
+    </View>
       <TouchableOpacity onPress={handlePostWorkout} style={styles.button}>
         <Text style={styles.buttonText}>Finish Workout</Text>
       </TouchableOpacity>
