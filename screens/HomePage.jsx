@@ -1,11 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import UpperToolBar from '../toolbars/upperToolbar';
+import { StyleSheet, Text, View, TouchableOpacity, ScrollView } from 'react-native';
 import { useTheme } from '../Theme/themeContext';
-
-const Stack = createStackNavigator()
 
 export default function HomePage({ navigation }) {
   const handleStartWorkout = () => {
@@ -17,83 +12,69 @@ export default function HomePage({ navigation }) {
   const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: isDarkMode ? '#343541' : '#fff',
-      alignItems: 'center',
+      backgroundColor: isDarkMode ? '#343541' : '#F7F7F7',
       paddingTop: 20,
-      paddingHorizantal: 16,
+      paddingHorizontal: 16,
+      alignContent: 'center',
     },
     title: {
-      fontSize: 24,
-      fontWeight: 'bold', 
-      color: isDarkMode ? '#bdbfc6' : 'black',
+      fontSize: 26,
+      fontWeight: 'bold',
+      color: isDarkMode ? '#FFFFFF' : '#000000',
+      alignSelf: 'center',
+      marginBottom: 10,
+      alignContent: 'center',
     },
     target: {
-      fontSize: 16,
-      color: isDarkMode ? '#bdbfc6' : 'black',
+      fontSize: 18,
+      color: isDarkMode ? '#FFFFFF' : '#000000',
+      alignSelf: 'center',
+      marginBottom: 20,
+      alignContent: 'center',
     },
     button: {
-      marginTop: 20,
-      padding: 10,
-      backgroundColor: isDarkMode ? '#566263' : 'blue',
-      borderRadius: 20,
+      backgroundColor: '#4D9DFF',
+      paddingVertical: 12,
+      paddingHorizontal: 25,
+      borderRadius: 25,
+      alignSelf: 'center',
+      marginTop: 30,
+      shadowOpacity: 0.3,
+      shadowRadius: 4,
+      shadowOffset: { height: 2, width: 0 },
+      elevation: 6,
     },
     buttonText: {
-      color: '#fff',
-      fontSize: 16,
+      color: '#FFFFFF',
+      fontSize: 20,
+      fontWeight: '600',
     },
     workoutContent: {
-      marginTop: 20,
-      color: isDarkMode ? '#fff' : '#fff',
+      alignSelf: 'center',
     },
-    });
+    workoutText: {
+      fontSize: 16,
+      color: isDarkMode ? '#bdbfc6' : '#333333',
+      lineHeight: 24,
+      fontWeight: '400',
+      alignContent: 'center',
+    },
+  });
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Today's Workout: {'\n'}</Text>
-      <Text style={styles.target}>Push{'\n'}</Text>
+    <ScrollView style={styles.container}>
+      <Text style={styles.title}>Today's Workout:</Text>
+      <Text style={styles.target}>Push</Text>
       <View style={styles.workoutContent}>
-        <Text>Workout 1{'\n'}</Text>
-        <Text>Workout 2{'\n'}</Text>
-        <Text>Workout 3{'\n'}</Text>
-        <Text>Workout 4{'\n'}</Text>
+        <Text style={styles.workoutText}>Workout 1</Text>
+        <Text style={styles.workoutText}>Workout 2</Text>
+        <Text style={styles.workoutText}>Workout 3</Text>
+        <Text style={styles.workoutText}>Workout 4</Text>
       </View>
 
       <TouchableOpacity onPress={handleStartWorkout} style={styles.button}>
         <Text style={styles.buttonText}>Start Workout</Text>
       </TouchableOpacity>
-
-    </View>
+    </ScrollView>
   );
 }
-
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    paddingTop: 20,
-    paddingHorizontal: 16,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-  },
-  target: {
-    fontSize: 16,
-  },
-  button: {
-    marginTop: 20,
-    padding: 10,
-    backgroundColor: '#566263',
-    borderRadius: 20,
-  },
-  buttonText: {
-    color: '#fff',
-    fontSize: 16,
-  },
-  workoutContent: {
-    color: '#fff',
-    marginTop: 20,
-  },
-});

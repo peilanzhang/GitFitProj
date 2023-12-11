@@ -45,8 +45,6 @@ const UpperToolbar = () => {
         <Image source={require('./home-icon.png')} style={styles.icon} />
       </TouchableOpacity>
 
-      <View style={styles.spacer} />
-
       <TouchableOpacity onPress={handleSettings}>
         <Image source={require('./settings-icon.jpeg')} style={styles.icon} />
       </TouchableOpacity>

@@ -1,161 +1,111 @@
 import React from 'react';
-import { View, Text, Switch, TouchableOpacity, Button,StyleSheet,TextInput } from 'react-native'; // or your UI library
+import { View, Text, Switch, TouchableOpacity, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useTheme } from '../Theme/themeContext';
+import WorkoutHistory from './workoutHistory';
 
- function AppSettings() {
+function AppSettings() {
   const navigation = useNavigation();
-
-  const goToWorkoutHistory = () => {
-    navigation.navigate('WorkoutHistory')
-  };
-
-  const { isDarkMode , toggleDarkMode} = useTheme();
+  const { isDarkMode, toggleDarkMode } = useTheme();
   const [selectedUnit, setSelectedUnit] = React.useState('Metric');
 
   const handleUnitChange = (unit) => {
     setSelectedUnit(unit);
   };
 
-  // Define styles conditionally based on isDarkMode
   const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: isDarkMode ? '#343541' : '#fff',
-      alignItems: 'center',
+      backgroundColor: isDarkMode ? '#343541' : '#F7F7F7',
       paddingTop: 20,
-      paddingHorizantal: 16,
+      paddingHorizontal: 16,
     },
     settingItem: {
-      // styles for each setting item
+      width: '100%',
+      paddingVertical: 16,
     },
     settingLabel: {
-      // styles for setting labels
-      fontSize: 24,
-      padding: 10,
-      color: isDarkMode ? '#bdbfc6' : 'black',
+      fontSize: 18,
+      fontWeight: '500',
+      paddingBottom: 10,
+      color: isDarkMode ? '#FFF' : '#000',
     },
-    input: {
-      borderWidth: 1,
-      borderColor: '#ccc',
-      borderRadius: 5,
-      paddingHorizontal: 10,
-      height: 40,
-    },
-    linkText: {
-    color: 'blue',
-    textDecorationLine: 'underline',
-    fontSize: 20,
-    padding: 10.
-    },
-    switchContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 20,
+    button: {
+      paddingVertical: 12,
+      paddingHorizontal: 25,
+      borderRadius: 25,
+      backgroundColor: isDarkMode ? '#555' : '#EFEFEF',
+      marginVertical: 10,
     },
     buttonText: {
-    color: 'red',
-    fontSize: 20,
-    padding: 10,
-    borderRadius: 5,
-    },
-    unitButton: {
-      fontSize: 18,
-      color: isDarkMode ? '#bdbfc6' : 'black',
+      fontSize: 16,
+      color: isDarkMode ? '#FFF' : '#000',
       textAlign: 'center',
+    },
+    switchContainer: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      paddingVertical: 16,
+      borderBottomWidth: 1,
+      borderBottomColor: isDarkMode ? '#555' : '#EFEFEF',
+    },
+    linkText: {
+      color: isDarkMode ? '#4D9DFF' : '#007AFF',
+      fontSize: 18,
+      paddingVertical: 10,
+    },
+    selectedUnit: {
+      fontWeight: '700',
     },
   });
 
   return (
     <View style={styles.container}>
+      {/* Unit of Measurement */}
       <View style={styles.settingItem}>
-        <Text style={styles.settingLabel}>Unit of measurement</Text>
-        <View style={styles.unitButton}>
-
-          {/* Metric and Imperial Buttons  */}
+        <Text style={styles.settingLabel}>Unit of Measurement</Text>
+        <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
           <TouchableOpacity
-              style={[styles.unitButton, selectedUnit === 'Metric' && styles.selectedUnit]}
-              onPress={() => handleUnitChange('Metric')}>
-            <Text style={[styles.unitButton, selectedUnit === 'Metric' && styles.selectedUnit]}>Metric</Text>
+            style={[styles.button, selectedUnit === 'Metric' ? { backgroundColor: '#4D9DFF' } : {}]}
+            onPress={() => handleUnitChange('Metric')}>
+            <Text style={[styles.buttonText, selectedUnit === 'Metric' && styles.selectedUnit]}>
+              Metric
+            </Text>
           </TouchableOpacity>
           <TouchableOpacity
-              style={[styles.unitButton, selectedUnit === 'Imperial' && styles.selectedUnit]}
-              onPress={() => handleUnitChange('Imperial')}>
-            <Text style={[styles.unitButton, selectedUnit === 'Imperial' && styles.selectedUnit]}>Imperial</Text>
+            style={[styles.button, selectedUnit === 'Imperial' ? { backgroundColor: '#4D9DFF' } : {}]}
+            onPress={() => handleUnitChange('Imperial')}>
+            <Text style={[styles.buttonText, selectedUnit === 'Imperial' && styles.selectedUnit]}>
+              Imperial
+            </Text>
           </TouchableOpacity>
         </View>
       </View>
 
-      {/* Dark Mode Switch  */}
+      {/* Dark Mode Switch */}
       <View style={styles.switchContainer}>
         <Text style={styles.settingLabel}>Dark Mode</Text>
         <Switch
-          value = {isDarkMode}
+          trackColor={{ false: '#767577', true: '#81b0ff' }}
+          thumbColor={isDarkMode ? '#f5dd4b' : '#f4f3f4'}
+          ios_backgroundColor="#3e3e3e"
           onValueChange={toggleDarkMode}
+          value={isDarkMode}
         />
       </View>
 
-      {/* View Workout History Button */}
-      <TouchableOpacity style={styles.linkButton} onPress={goToWorkoutHistory}>
+      {/* View Workout History */}
+      <TouchableOpacity style={styles.settingItem} onPress={WorkoutHistory}>
         <Text style={styles.linkText}>View Workout History</Text>
       </TouchableOpacity>
 
-      <View style={styles.settingItem}>
-        <TouchableOpacity>
-          <Text style={styles.buttonText}>Reset Data</Text>
+      {/* Reset Data */}
+      <TouchableOpacity style={styles.settingItem}>
+        <Text style={[styles.linkText, { color: '#FF3B30' }]}>Reset Data</Text>
       </TouchableOpacity>
-      </View>
     </View>
   );
 }
 
-
-
-// You would define your styles here to match the design in the image
-const styles = StyleSheet.create({
-  container: {
-    // styles for container
-    alignItems: 'center', 
-    justifyContent: 'center'
-  },
-
-  settingItem: {
-    // styles for each setting item
-  },
-  settingLabel: {
-    // styles for setting labels
-    fontSize: 24,
-    padding: 10,
-  },
-  input: {
-    borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 5,
-    paddingHorizontal: 10,
-    height: 40,
-  },
-  linkText: {
-  color: 'blue',
-  textDecorationLine: 'underline',
-  fontSize: 20,
-  padding: 10.
-  },
-  switchContainer: {
-  flexDirection: 'row',
-  alignItems: 'center',
-  marginBottom: 20,
-  },
-  buttonText: {
-  color: 'red',
-  fontSize: 20,
-  padding: 10,
-  borderRadius: 5,
-  },
-  unitButton: {
-    fontSize: 18,
-    color: 'black',
-    textAlign: 'center',
-  },
-
-});
 export default AppSettings;
