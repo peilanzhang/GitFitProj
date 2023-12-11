@@ -22,7 +22,9 @@ const UpperToolbar = () => {
       flexDirection: 'row',
       justifyContent: 'space-between',
       alignItems: 'center',
-      padding: 10,
+      paddingtop: 40,
+      paddingLeft: 35,
+      paddingRight: 35,
       paddingTop: 40, // Add paddingTop to push content below the toolbar
       borderBottomColor: 'black',
       backgroundColor: isDarkMode ? '#696a80' : '#fff',
@@ -31,8 +33,9 @@ const UpperToolbar = () => {
       // Add styles for the title text
     },
     icon: {
-      width: 30,
-      height: 30,
+      width: 50,
+      height: 50,
+      backgroundColor: 'transparent',
     },
     spacer: {
       flex: 1,
@@ -42,11 +45,11 @@ const UpperToolbar = () => {
   return (
     <View style={styles.toolbar}>
       <TouchableOpacity onPress={handleNavigateHome}>
-        <Image source={require('./home-icon.png')} style={styles.icon} />
+        <Image source={require('./home.png')} style={styles.icon} />
       </TouchableOpacity>
 
       <TouchableOpacity onPress={handleSettings}>
-        <Image source={require('./settings-icon.jpeg')} style={styles.icon} />
+        <Image source={require('./gear.png')} style={styles.icon} />
       </TouchableOpacity>
     </View>
   );

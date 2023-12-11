@@ -35,6 +35,7 @@ function LowerToolbar() {
         icon: {
           width: 50,
           height: 50, 
+          backgroundColor: isDarkMode ? '#696a80' : '#fff',
         },
     });
 
@@ -69,9 +70,9 @@ const styles = StyleSheet.create({
    
     icon: {
       width: 50,
-      height: 50, 
+      height: 50,
     },
-  
+
   });
 
 export default LowerToolbar;
