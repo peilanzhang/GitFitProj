@@ -1,5 +1,5 @@
-import React from 'react';
-import { ScrollView, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { ScrollView, Text, StyleSheet, View, TouchableOpacity, Linking } from 'react-native';
 import { useTheme } from '../Theme/themeContext';
 
 const ExerciseList = () => {
@@ -45,26 +45,78 @@ const ExerciseList = () => {
     </TouchableOpacity>
   );
 
+  const [exercises, setExercises] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+      fetch('http://192.168.1.126:3000/api/exersises')
+          .then(response => {
+              if (!response.ok) {
+                  throw new Error('Network response was not ok');
+              }
+              return response.json();
+          })
+          .then(data => {
+              setExercises(data);
+              setIsLoading(false);
+          })
+          .catch(error => {
+              console.error('Error fetching data:', error);
+              setError(error.message);
+              setIsLoading(false);
+          });
+  }, []);
+
+ 
+  if (isLoading) {
+    return <Text>Loading...</Text>;
+}
+
+if (error) {
+    return <Text>Error: {error}</Text>;
+}
+
+const handlePress = (exercise) => {
+  // Example URL - replace with your actual URL or a property from 'exercise'
+  const url = exercise;
+
+  Linking.openURL(url).catch(err => console.error('An error occurred', err));
+};
+
+
+  // return (
+  //   <ScrollView style={styles.container}>
+  //     <Text style={styles.categoryTitle}>Chest</Text>
+  //     <Exercise>Bench press</Exercise>
+  //     <Exercise>Dumbbell chest fly</Exercise>
+  //     <Exercise>Pushups</Exercise>
+  //     <Exercise>Incline bench press</Exercise>
+
+  //     <Text style={styles.categoryTitle}>Back</Text>
+  //     <Exercise>Barbell rows</Exercise>
+  //     <Exercise>Lat pulldowns</Exercise>
+  //     <Exercise>Seated rows</Exercise>
+  //     <Exercise>Deadlift</Exercise>
+
+  //     <Text style={styles.categoryTitle}>Legs</Text>
+  //     <Exercise>Bulgarian split squat</Exercise>
+  //     <Exercise>Leg press</Exercise>
+  //     <Exercise>Front squat</Exercise>
+  //   </ScrollView>
+  //);
+
   return (
     <ScrollView style={styles.container}>
-      <Text style={styles.categoryTitle}>Chest</Text>
-      <Exercise>Bench press</Exercise>
-      <Exercise>Dumbbell chest fly</Exercise>
-      <Exercise>Pushups</Exercise>
-      <Exercise>Incline bench press</Exercise>
-
-      <Text style={styles.categoryTitle}>Back</Text>
-      <Exercise>Barbell rows</Exercise>
-      <Exercise>Lat pulldowns</Exercise>
-      <Exercise>Seated rows</Exercise>
-      <Exercise>Deadlift</Exercise>
-
-      <Text style={styles.categoryTitle}>Legs</Text>
-      <Exercise>Bulgarian split squat</Exercise>
-      <Exercise>Leg press</Exercise>
-      <Exercise>Front squat</Exercise>
+        <Text style={styles.header}>Exercises</Text>
+        {exercises.map(exercise => (
+            <TouchableOpacity key={exercise.id} onPress={() => handlePress(exercise.link)} style={styles.item}>
+                <Text style={styles.item}>{exercise.name}-{exercise.muscle}</Text>
+            </TouchableOpacity>
+        ))}
     </ScrollView>
   );
 };
+
 
 export default ExerciseList;

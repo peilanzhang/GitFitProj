@@ -1,15 +1,45 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, TextInput, TouchableOpacity, KeyboardAvoidingView, Platform, ScrollView } from 'react-native';
 import { useTheme } from '../Theme/themeContext';
+import { useNavigation } from '@react-navigation/native';
+
 
 function ExerciseForm() {
   const [exerciseName, setExerciseName] = useState('');
   const [muscleWorked, setMuscleWorked] = useState('');
   const [tutorialLink, setTutorialLink] = useState('');
+  const navigation = useNavigation();
 
   const handleSubmit = () => {
-    console.log(exerciseName, muscleWorked, tutorialLink);
+    if (exerciseName=='' || muscleWorked=='') return;
+    fetch('http://192.168.1.126:3000/api/addExercise', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: exerciseName,
+        muscle: muscleWorked,
+        link: tutorialLink
+      })
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      // Handle the response data...
+    })
+    .catch(error => {
+      console.error(error);
+      // Handle errors...
+    });
+    setExerciseName('');
+    setMuscleWorked('');
+    setTutorialLink('');
+    navigation.navigate('ExerciseList');
+
   };
+  
+  
 
   const { isDarkMode } = useTheme();
 
@@ -77,7 +107,7 @@ function ExerciseForm() {
           placeholderTextColor={isDarkMode ? '#6C6F76' : '#888'}
         />
 
-        <Text style={styles.label}>Link to Exercise Tutorial (optional)</Text>
+        <Text style={styles.label}>Link to Exercise Tutorial </Text>
         <TextInput
           style={styles.input}
           onChangeText={setTutorialLink}
@@ -85,6 +115,7 @@ function ExerciseForm() {
           placeholder="Enter URL"
           placeholderTextColor={isDarkMode ? '#6C6F76' : '#888'}
         />
+
 
         <TouchableOpacity style={styles.button} onPress={handleSubmit} activeOpacity={0.7}>
           <Text style={styles.buttonText}>Submit</Text>
