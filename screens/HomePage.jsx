@@ -15,11 +15,9 @@ export default function HomePage({ navigation }) {
     navigation.navigate('GeneratorPage');
 
   };
--
+
   
-  useEffect(() => {
-console.log(data) 
- }, []);
+  useEffect(() => {console.log(data)}, []);
 
   const { isDarkMode } = useTheme();
 
