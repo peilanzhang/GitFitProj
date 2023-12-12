@@ -57,22 +57,20 @@ export default function WorkoutPage({ navigation }) {
     container: {
       flex: 1,
       backgroundColor: isDarkMode ? '#343541' : '#f7f7f7',
-      alignItems: 'center',
-      justifyContent: 'center',
       padding: 20,
     },
     title: {
-      fontSize: 28, 
+      fontSize: 28,
       fontWeight: 'bold',
       color: isDarkMode ? '#fff' : '#000000',
-      marginBottom: 8, 
+      marginBottom: 8,
     },
     text: {
-      fontSize: 20, 
+      fontSize: 20,
       color: isDarkMode ? '#fff' : '#000000',
       textAlign: 'center',
       paddingHorizontal: 10,
-      marginBottom: 16, 
+      marginBottom: 16,
     },
     button: {
       marginTop: 20,
@@ -84,13 +82,12 @@ export default function WorkoutPage({ navigation }) {
       shadowOffset: { width: 0, height: 4 },
       shadowOpacity: 0.3,
       shadowRadius: 5,
-      alignSelf: 'center', // This will center the button in its parent container
-      // width: 200, // Uncomment and adjust this as needed to set a specific width for the button
+      alignSelf: 'center',
     },
     buttonText: {
-      color: '#fff',
+      color: isDarkMode ? '#fff' : '#000',
       fontSize: 18,
-      fontWeight: '500', 
+      fontWeight: '500',
     },
     workoutContent: {
       marginTop: 20,
@@ -104,7 +101,6 @@ export default function WorkoutPage({ navigation }) {
     timerButtonContainer: {
       flexDirection: 'row',
       justifyContent: 'space-around',
-      alignItems: 'center',
       marginBottom: 20,
     },
     startButton: {
@@ -119,16 +115,16 @@ export default function WorkoutPage({ navigation }) {
   });
 
   return (
-    <ScrollView >
-            <Text style={styles.timer}>Rest Timer: {formatTime(seconds)}</Text>
-            <View style={styles.timerButtonContainer}>
-        <TouchableOpacity style={[styles.button, styles.startButton]} onPress={startTimer}>
+    <ScrollView style={styles.container}>
+      <Text style={styles.timer}>Rest Timer: {formatTime(seconds)}</Text>
+      <View style={styles.timerButtonContainer}>
+        <TouchableOpacity style={[styles.button, styles.startButton, isDarkMode]} onPress={startTimer}>
           <Text style={styles.buttonText}>Start</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={[styles.button, styles.stopButton]} onPress={stopTimer}>
+        <TouchableOpacity style={[styles.button, styles.stopButton, isDarkMode]} onPress={stopTimer}>
           <Text style={styles.buttonText}>Stop</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={[styles.button, styles.resetButton]} onPress={resetTimer}>
+        <TouchableOpacity style={[styles.button, styles.resetButton, isDarkMode]} onPress={resetTimer}>
           <Text style={styles.buttonText}>Reset</Text>
         </TouchableOpacity>
       </View>
@@ -141,7 +137,7 @@ export default function WorkoutPage({ navigation }) {
         />
       ))}
 
-      <TouchableOpacity style={styles.button} onPress={handlePostWorkout}>
+      <TouchableOpacity style={[styles.button, isDarkMode]} onPress={handlePostWorkout}>
         <Text style={styles.buttonText}>Finish Workout</Text>
       </TouchableOpacity>
     </ScrollView>

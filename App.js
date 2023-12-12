@@ -88,7 +88,7 @@ function HomeScreen({ navigation }) {
       </TouchableOpacity>
     </View>
   );
-  }
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -105,11 +105,11 @@ const styles = StyleSheet.create({
   button: {
     marginTop: 20,
     padding: 10,
-    backgroundColor: '#566263', // Change the color as needed
+    backgroundColor: '#566263', 
     borderRadius: 20,
   },
   buttonText: {
-    color: '#fff', // Change the color as needed
+    color: '#fff', 
     fontSize: 16,
   },
 });

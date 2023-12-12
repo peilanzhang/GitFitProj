@@ -1,6 +1,7 @@
 
 import React, {useState, useEffect} from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, Linking, TextInput} from 'react-native';
+import { useTheme } from '../Theme/themeContext';
 
 export default function workoutItem  ({ name, muscle, link })  {
   
@@ -12,6 +13,8 @@ export default function workoutItem  ({ name, muscle, link })  {
     return numbers[randomIndex]; // Return the number at the random index
   });
 
+  const { isDarkMode } = useTheme();
+
   const togglePressStatus = (index) => {
     setPressStatus(pressStatus.map((status, i) => (i === index ? !status : status)));
   };
@@ -21,16 +24,17 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     padding: 10,
     borderWidth: 1,
-    borderColor: '#ddd',
+    borderColor: isDarkMode ? '#555' : '#ddd',
     borderRadius: 5,
   },
   exerciseName: {
     fontSize: 18,
     fontWeight: 'bold',
+    color: isDarkMode ? '#fff' : '#000',
   },
   exerciseMuscle: {
     fontSize: 14,
-    color: '#666',
+    color: isDarkMode ? '#fff' : '#000',
   },
   exerciseLink: {
     fontSize: 14,
@@ -48,6 +52,7 @@ const styles = StyleSheet.create({
   weightInput: {
     borderWidth: 1,
     borderColor: '#ddd',
+    color: isDarkMode ? '#fff' : '#000',
     padding: 5,
     width: 50,
     marginHorizontal: 10,
@@ -58,7 +63,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
-
 
 return (
   <View style={styles.itemContainer}>
@@ -72,6 +76,7 @@ return (
         onChangeText={setWeight}
         value={weight}
         placeholder="lbs"
+        placeholderTextColor={isDarkMode ? '#fff' : '#000'}
         keyboardType="numeric"
       />
     </View>
