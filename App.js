@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
   button: {
     marginTop: 20,
     padding: 10,
-    backgroundColor: '#566263', // Change the color as needed
+    backgroundColor: '#4D9DFF', // Change the color as needed
     borderRadius: 20,
   },
   buttonText: {
