@@ -35,7 +35,6 @@ export default function HomePage({ navigation }) {
       color: isDarkMode ? '#FFFFFF' : '#000000',
       alignSelf: 'center',
       marginBottom: 10,
-      alignContent: 'center',
     },
     midtext: {
       fontSize: 20,
@@ -76,7 +75,7 @@ export default function HomePage({ navigation }) {
       color: isDarkMode ? '#bdbfc6' : '#333333',
       lineHeight: 24,
       fontWeight: '400',
-      alignContent: 'center',
+      alignSelf: 'center',
     },
   });
 
