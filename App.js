@@ -13,7 +13,7 @@ import ExerciseList from './screens/excersiseList';
 import UpperToolbar from './toolbars/upperToolbar';
 import Settings from './screens/AppSettings'
 import WorkoutHistory from './screens/workoutHistory';
-import { DataProvider } from './DataContext'; // Import the DataProvider
+import { DataProvider,AnotherProvider } from './DataContext'; // Import the DataProvider
 
 
 const Stack = createStackNavigator();
@@ -22,6 +22,7 @@ const Stack = createStackNavigator();
     return (
       <ThemeProvider>
         <DataProvider>
+          <AnotherProvider>
         <NavigationContainer>
           <UpperToolbar/>
           <Stack.Navigator>
@@ -68,6 +69,7 @@ const Stack = createStackNavigator();
         </Stack.Navigator>
         <LowerToolbar />
       </NavigationContainer>
+      </AnotherProvider>
       </DataProvider>
     </ThemeProvider>
   );

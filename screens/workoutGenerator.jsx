@@ -3,7 +3,7 @@ import { StyleSheet, View, Text, TextInput, TouchableOpacity} from 'react-native
 import {Picker} from '@react-native-picker/picker'
 import { useNavigation } from '@react-navigation/native';
 import { useTheme } from '../Theme/themeContext';
-import { useData } from '../DataContext'; // Import the useData hook from the DataContext
+import { useData,useAnother } from '../DataContext'; // Import the useData hook from the DataContext
 
 function WorkoutForm() {
   const navigation = useNavigation();
@@ -12,18 +12,23 @@ function WorkoutForm() {
   const [customExercise, setCustomExercise] = useState('');
   const [muscleGroup, setMuscleGroup] = useState(['Shoulders', 'Chest', 'Triceps']);
   const { setData } = useData(); 
+  const { anotherData, setAnotherData } = useAnother();
+  
 
   useEffect(() => {
     if (selectedWorkoutType=='push') {
       setMuscleGroup(['Shoulders', 'Chest', 'Triceps']);
+      setAnotherData('Push');
     }
     else if (selectedWorkoutType=='pull') {
 
       setMuscleGroup(['Back','Back', 'Biceps']);
+      setAnotherData('Pull');
     }
     else if (selectedWorkoutType=='legs') {
 
       setMuscleGroup(['Legs','Legs']);
+      setAnotherData('Legs');
     }
 
   }, [selectedWorkoutType]);
@@ -33,7 +38,7 @@ function WorkoutForm() {
   }, [muscleGroup]);
 
   const generateWorkout = () => {
-    console.log('muscleGroup for fetch:', muscleGroup)
+    console.log('Type for fetch:', anotherData)
     fetch('http://192.168.1.126:3000/api/generateWorkout', {
       method: 'POST',
       headers: {
@@ -45,7 +50,7 @@ function WorkoutForm() {
     })
     .then(response => response.json())
     .then(data => {
-      console.log(data.exercises.length);
+      console.log(data.exercises);
       setData(data.exercises);
     })
     .catch(error => {

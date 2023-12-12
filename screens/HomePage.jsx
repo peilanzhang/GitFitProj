@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, ScrollView } from 'react-native';
 import { useTheme } from '../Theme/themeContext';
-import { useData } from '../DataContext'; // Import the useData hook from the DataContext
+import { useData,useAnother } from '../DataContext'; // Import the useData hook from the DataContext
 
 export default function HomePage({ navigation }) {
   const { data } = useData(); // Access the data from the context
+  const { anotherData } = useAnother(); // Access the data from the context
   const handleStartWorkout = () => {
     console.log('data from context:', data);
     navigation.navigate('WorkoutPage');
+
+  };
+  const handleGenerate = () => {
+    navigation.navigate('GeneratorPage');
 
   };
 -
@@ -73,7 +78,7 @@ console.log(data)
   return (
     <ScrollView style={styles.container}>
       <Text style={styles.title}>Today's Workout:</Text>
-      <Text style={styles.target}>Push</Text>
+      <Text style={styles.target}>{anotherData}</Text>
       <View style={styles.container}>
   {data ? (
     <>
@@ -83,15 +88,21 @@ console.log(data)
           {exercise.name}
         </Text>
       ))}
-    </>
-  ) : (
-    <Text style={styles.message}>Generate a workout</Text>
-  )}
-</View>
-
       <TouchableOpacity onPress={handleStartWorkout} style={styles.button}>
         <Text style={styles.buttonText}>Start Workout</Text>
       </TouchableOpacity>
+    </>
+  ) : (
+    <View >
+    <Text style={styles.message}>Generate a workout</Text>
+    <TouchableOpacity onPress={handleGenerate} style={styles.button}>
+        <Text style={styles.buttonText}>Generate Workout</Text>
+      </TouchableOpacity>
+    </View>
+  )}
+</View>
+
+      
     </ScrollView>
   );
 }

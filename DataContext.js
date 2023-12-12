@@ -19,3 +19,19 @@ export function DataProvider({ children }) {
 export function useData() {
   return useContext(DataContext);
 }
+const AnotherContext = createContext('');
+
+export function AnotherProvider({ children }) {
+  const [anotherData, setAnotherData] = useState(/* initial anotherData */);
+  // You can provide functions to update the anotherData as needed
+
+  return (
+    <AnotherContext.Provider value={{ anotherData, setAnotherData }}>
+      {children}
+    </AnotherContext.Provider>
+  );
+}
+
+export function useAnother() {
+  return useContext(AnotherContext);
+}
