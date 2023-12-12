@@ -12,7 +12,7 @@ function ExerciseForm() {
 
   const handleSubmit = () => {
     if (exerciseName=='' || muscleWorked=='') return;
-    fetch('http://192.168.1.126:3000/api/addExercise', {
+    fetch('http://10.141.144.205:3000/api/addExercise', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

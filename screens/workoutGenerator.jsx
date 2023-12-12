@@ -8,7 +8,7 @@ import { useData,useAnother } from '../DataContext'; // Import the useData hook 
 function WorkoutForm() {
   const navigation = useNavigation();
  
-  const [selectedWorkoutType, setSelectedWorkoutType] = useState();
+  const [selectedWorkoutType, setSelectedWorkoutType] = useState('push');
   const [customExercise, setCustomExercise] = useState('');
   const [muscleGroup, setMuscleGroup] = useState([]);
   const { setData } = useData(); 
@@ -44,7 +44,7 @@ function WorkoutForm() {
 
   const generateWorkout = () => {
     console.log('Type for fetch:', anotherData)
-    fetch('http://192.168.1.126:3000/api/generateWorkout', {
+    fetch('http://10.141.144.205:3000/api/generateWorkout', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

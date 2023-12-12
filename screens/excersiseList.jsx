@@ -62,7 +62,7 @@ const ExerciseList = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-      fetch('http://192.168.1.126:3000/api/exersises')
+      fetch('http://10.141.144.205:3000/api/exersises')
           .then(response => {
               if (!response.ok) {
                   throw new Error('Network response was not ok');
