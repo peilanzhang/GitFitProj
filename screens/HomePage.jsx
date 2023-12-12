@@ -39,6 +39,13 @@ console.log(data)
       marginBottom: 10,
       alignContent: 'center',
     },
+    midtext: {
+      fontSize: 20,
+      color: isDarkMode ? '#FFFFFF' : '#000000',
+      alignSelf: 'center',
+      marginBottom: 10,
+      alignContent: 'center',
+    },
     target: {
       fontSize: 18,
       color: isDarkMode ? '#FFFFFF' : '#000000',
@@ -94,7 +101,7 @@ console.log(data)
     </>
   ) : (
     <View >
-    <Text style={styles.message}>Generate a workout</Text>
+    <Text style={styles.midtext}>Generate a workout</Text>
     <TouchableOpacity onPress={handleGenerate} style={styles.button}>
         <Text style={styles.buttonText}>Generate Workout</Text>
       </TouchableOpacity>

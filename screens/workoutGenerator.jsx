@@ -120,8 +120,9 @@ function WorkoutForm() {
       shadowRadius: 5,
     },
     buttonText: {
-      color: isDarkMode ? '#fff' : '#000',
+      color: isDarkMode ? '#fff' : '#fff',
       fontSize: 16,
+      fontWeight: '500',
     }
   });
   return (

@@ -98,9 +98,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   title: {
-    fontSize: 24, // Adjust the font size as needed
+    fontSize: 50, // Adjust the font size as needed
     fontWeight: 'bold', // You can add other styles as needed
-    marginBottom: 20, // Add margin to separate the title from the button
+    marginBottom: 40, // Add margin to separate the title from the button
   },
   button: {
     marginTop: 20,

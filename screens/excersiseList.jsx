@@ -97,26 +97,7 @@ const handlePress = (exercise) => {
 };
 
 
-  // return (
-  //   <ScrollView style={styles.container}>
-  //     <Text style={styles.categoryTitle}>Chest</Text>
-  //     <Exercise>Bench press</Exercise>
-  //     <Exercise>Dumbbell chest fly</Exercise>
-  //     <Exercise>Pushups</Exercise>
-  //     <Exercise>Incline bench press</Exercise>
-
-  //     <Text style={styles.categoryTitle}>Back</Text>
-  //     <Exercise>Barbell rows</Exercise>
-  //     <Exercise>Lat pulldowns</Exercise>
-  //     <Exercise>Seated rows</Exercise>
-  //     <Exercise>Deadlift</Exercise>
-
-  //     <Text style={styles.categoryTitle}>Legs</Text>
-  //     <Exercise>Bulgarian split squat</Exercise>
-  //     <Exercise>Leg press</Exercise>
-  //     <Exercise>Front squat</Exercise>
-  //   </ScrollView>
-  //);
+ 
 
   return (
     <ScrollView style={styles.container}>
