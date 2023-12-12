@@ -8,9 +8,9 @@ import { useData,useAnother } from '../DataContext'; // Import the useData hook 
 function WorkoutForm() {
   const navigation = useNavigation();
  
-  const [selectedWorkoutType, setSelectedWorkoutType] = useState('push');
+  const [selectedWorkoutType, setSelectedWorkoutType] = useState();
   const [customExercise, setCustomExercise] = useState('');
-  const [muscleGroup, setMuscleGroup] = useState(['Shoulders', 'Chest', 'Triceps']);
+  const [muscleGroup, setMuscleGroup] = useState([]);
   const { setData } = useData(); 
   const { anotherData, setAnotherData } = useAnother();
   
@@ -29,6 +29,11 @@ function WorkoutForm() {
 
       setMuscleGroup(['Legs','Legs']);
       setAnotherData('Legs');
+    }
+    else if (selectedWorkoutType=='fullbody') {
+        
+        setMuscleGroup(['Chest', 'Back', 'Shoulders', 'Biceps', 'Triceps', 'Legs']);
+        setAnotherData('Full Body');
     }
 
   }, [selectedWorkoutType]);
@@ -131,6 +136,8 @@ function WorkoutForm() {
     <Picker.Item label="Push (Shoulders, Chest, Triceps)" value={'push'} />
     <Picker.Item label="Pull (Back, Biceps)" value={'pull'} />
     <Picker.Item label="Legs (Leg muscles)" value={'legs'} />
+    <Picker.Item label="Full Body (All muscles)" value={'fullbody'} />
+
     {/* Add more Picker.Item components as needed */}
   </Picker>
 
