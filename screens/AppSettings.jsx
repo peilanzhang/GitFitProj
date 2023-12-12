@@ -62,27 +62,7 @@ function AppSettings() {
 
   return (
     <View style={styles.container}>
-      {/* Unit of Measurement */}
-      <View style={styles.settingItem}>
-        <Text style={styles.settingLabel}>Unit of Measurement</Text>
-        <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
-          <TouchableOpacity
-            style={[styles.button, selectedUnit === 'Metric' ? { backgroundColor: '#4D9DFF' } : {}]}
-            onPress={() => handleUnitChange('Metric')}>
-            <Text style={[styles.buttonText, selectedUnit === 'Metric' && styles.selectedUnit]}>
-              Metric
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={[styles.button, selectedUnit === 'Imperial' ? { backgroundColor: '#4D9DFF' } : {}]}
-            onPress={() => handleUnitChange('Imperial')}>
-            <Text style={[styles.buttonText, selectedUnit === 'Imperial' && styles.selectedUnit]}>
-              Imperial
-            </Text>
-          </TouchableOpacity>
-        </View>
-      </View>
-
+      
       {/* Dark Mode Switch */}
       <View style={styles.switchContainer}>
         <Text style={styles.settingLabel}>Dark Mode</Text>
@@ -95,15 +75,7 @@ function AppSettings() {
         />
       </View>
 
-      {/* View Workout History */}
-      <TouchableOpacity style={styles.settingItem} onPress={WorkoutHistory}>
-        <Text style={styles.linkText}>View Workout History</Text>
-      </TouchableOpacity>
-
-      {/* Reset Data */}
-      <TouchableOpacity style={styles.settingItem}>
-        <Text style={[styles.linkText, { color: '#FF3B30' }]}>Reset Data</Text>
-      </TouchableOpacity>
+    
     </View>
   );
 }
